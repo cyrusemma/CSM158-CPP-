@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std; 
+
+int main(){
+    int ExamScore;
+    cout<<"Enter yout examscore:";
+    cin>>ExamScore;
+    cout<<"\n";
+
+    if(ExamScore>=70){
+        cout<<ExamScore<<"is a Grade A";
+    }
+    else if (ExamScore>=60){
+        cout<<ExamScore<<"is a Grade B";
+    }
+    else if (ExamScore>=50){
+        cout<<ExamScore<<"is a Grade B";
+        }
+    else if (ExamScore>=40){
+        cout<<ExamScore<<"is a Grade C";
+    }
+    else{
+        cout<<ExamScore<<"is a Grade F"; 
+    }
+
+    return 0;
+    }
