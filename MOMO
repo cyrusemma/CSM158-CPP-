@@ -1,0 +1,107 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <limits>
+
+using namespace std;
+
+// Function prototypes
+bool validateCode(const string& code);
+void displayMainMenu();
+void processTransaction(double amount);
+void withdrawMoney();
+
+// Main function
+int main() {
+    string code;
+
+    // Welcome message
+    cout << "Welcome to MTN Mobile Money!" << endl;
+    cout << "--------------------------------" << endl;
+
+    // Input and validate code
+    cout << "Enter Code (e.g., *170#): ";
+    cin >> code;
+
+    if (!validateCode(code)) {
+        cout << "Invalid code! Please enter *170#." << endl;
+        return 1;
+    }
+
+    // Display main menu
+    displayMainMenu();
+
+    return 0;
+}
+
+// Function to validate the entered code
+bool validateCode(const string& code) {
+    return code == "*170#";
+}
+
+// Function to display the main menu and handle user choice
+void displayMainMenu() {
+    int choice;
+
+    cout << "Main Menu:" << endl;
+    cout << "1. Check Balance" << endl;
+    cout << "2. Withdraw Money" << endl;
+    cout << "3. Transfer Money" << endl;
+    cout << "4. Buy Airtime" << endl;
+    cout << "5. Exit" << endl;
+
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    switch (choice) {
+        case 1:
+            cout << "Your balance is GH¢200.00." << endl;
+            break;
+        case 2:
+            withdrawMoney();
+            break;
+        case 3:
+            cout << "Feature coming soon!" << endl;
+            break;
+        case 4:
+            cout << "Feature coming soon!" << endl;
+            break;
+        case 5:
+            cout << "Exiting..." << endl;
+            break;
+        default:
+            cout << "Invalid choice. Please try again." << endl;
+            displayMainMenu();
+            break;
+    }
+}
+
+// Function to handle withdrawal of money
+void withdrawMoney() {
+    string pin;
+    double amount;
+
+    cout << "Withdraw Money" << endl;
+    cout << "--------------" << endl;
+
+    // Input and validate amount
+    cout << "Enter Amount to Withdraw: GH¢";
+    while (!(cin >> amount) || amount <= 0) {
+        cout << "Invalid amount! Please enter a positive number: GH¢";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    // Input secret code (PIN)
+    cout << "Enter your secret code (PIN): ";
+    cin >> pin;
+
+    // Simulate processing transaction
+    processTransaction(amount);
+}
+
+// Function to simulate processing the transaction
+void processTransaction(double amount) {
+    cout << fixed << setprecision(2);
+    cout << "You have successfully withdrawn GH¢" << amount << "." << endl;
+}
